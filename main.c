@@ -3,7 +3,7 @@
 #include <math.h>
 #include <string.h>
 
-#define mdp 36
+#define mdp 48
 
 int main(){
     int isRunning = 1;
@@ -18,7 +18,8 @@ int main(){
             int response = atoi(c_response);
             int storedResponse = response;
             int highestBinNum = 1;
-            while(highestBinNum<response){
+            while(highestBinNum<=response){
+                printf("%d", highestBinNum);
                 highestBinNum*=2;
             }
             int amountOfDigits = log(highestBinNum)/log(2);
