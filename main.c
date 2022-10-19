@@ -15,7 +15,6 @@ int main(){
             isRunning = 0;
         }
         else{
-            puts("1");
             int response = atoi(c_response);
             int storedResponse = response;
             int highestBinNum = 1;
