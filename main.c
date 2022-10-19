@@ -5,7 +5,35 @@
 
 #define mdp 48
 
+void DToB();
+void BToD();
+
 int main(){
+    int wr = 1;
+    while(wr){
+        char command[7];
+        printf("\nPlease enter your command: ");
+        fgets(command, 7, stdin);
+        if(!strcmp(command, "help\n")){
+            printf("Usage: <Type Input> <Type Output>\n\nSupported types:\n\nBinary : b\nDenary : d");
+        }
+        else if(!strcmp(command, "d b\n")){
+            DToB();
+        }
+        else if(!strcmp(command, "b d\n")){
+            BToD();
+        }
+        else if(!strcmp(command, "exit\n")){
+            wr = 0;
+        }
+        else{
+            printf("\nUnknown Command, please type help for more information.\n");
+        }
+    }
+    return 0;
+}
+
+void DToB(){
     int isRunning = 1;
     while(isRunning){
         printf("Please enter the number to convert to binary: ");
@@ -15,15 +43,16 @@ int main(){
             isRunning = 0;
         }
         else{
-            int response = atoi(c_response);
-            int storedResponse = response;
-            int highestBinNum = 1;
+            long long response = atol(c_response);
+            long long storedResponse = response;
+            long long highestBinNum = 1;
             while(highestBinNum<=response){
-                printf("%d", highestBinNum);
+                printf("\n%ld\n", highestBinNum);
                 highestBinNum*=2;
             }
             int amountOfDigits = log(highestBinNum)/log(2);
-            char num[amountOfDigits];
+            char* num;
+            num = (char *)malloc(amountOfDigits*sizeof(char));
             int nextFree = 0;
             for(int i = 0; i <= amountOfDigits; i++){
                 if(response-highestBinNum >= 0){
@@ -40,5 +69,8 @@ int main(){
             printf("\n\n%d in binary = %s\n", storedResponse, num);
         }
     }
-    return 0;
+}
+
+void BToD(){
+    printf("\n\n");
 }
